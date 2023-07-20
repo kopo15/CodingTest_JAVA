@@ -9,19 +9,20 @@ class Solution {
 		for(int i=0; i< babbling.length; i++) {
 			for(int j=0; j<string.length; j++) {
 
-				if(babbling[i].contains(string[j]) && !(babbling[i].contains(string[j]+string[j]))) {
-
-					//babbling[i]=babbling[i].replace("aya","1");
-					//babbling[i]=babbling[i].replace("ye","1");
-					//babbling[i]=babbling[i].replace("woo","1");
-					//babbling[i]=babbling[i].replace("ma","1");		 										
-					//babbling[i]=babbling[i].replace("1","");
-                    babbling[i]=babbling[i].replace(string[j],"1");
-	                babbling[i]=babbling[i].replace("1"," ").trim();
+				if(babbling[i].contains(string[j])) {
+                    if(babbling[i].contains(string[j]+string[j])) break;
+					babbling[i]=babbling[i].replace(string[j],"1");
+// 					babbling[i]=babbling[i].replace("ye","1");
+// 					babbling[i]=babbling[i].replace("woo","1");
+// 					babbling[i]=babbling[i].replace("ma","1");
+                    
 				}	
 			}
-			if(babbling[i].isEmpty()) {
-				answer ++;
+            babbling[i]=babbling[i].replaceAll("1","");
+	        // babbling[i]=babbling[i].replace(string[j],"1");
+	        // babbling[i]=babbling[i].replace("1"," ").trim();
+			if(babbling[i].isEmpty() || babbling[i].equals("")) {
+				answer++;
 			}
 		}
 		return answer;
